@@ -26,3 +26,11 @@ public:
     int getId() { return id; }
     string getNama() { return nama; }
 };
+
+// Inisialisasi static member
+int User::globalId = 0;
+
+// Forward declaration untuk class Member agar Admin bisa mengenalnya
+class Member;
+
+// Derived Class: Member
