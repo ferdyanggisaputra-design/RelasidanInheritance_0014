@@ -60,3 +60,30 @@ public:
         cout << "---------------------" << endl;
     }
 };
+
+// Derived Class: Admin
+class Admin : public User {
+public:
+    Admin(string pNama, string pEmail) : User(pNama, pEmail) {}
+
+    // Menampilkan semua member yang terdaftar
+    void showAllMember(vector<Member>& daftarMember) {
+        cout << "\n[Admin Panel] Daftar Semua Member:" << endl;
+        for (auto& m : daftarMember) {
+            cout << "ID: " << m.getId() << " | Nama: " << m.getNama() 
+                 << " | Status: " << (m.getStatus() ? "Aktif" : "Mati") << endl;
+        }
+    }
+
+    // Mengubah status aktif/non-aktif member berdasarkan ID
+    void toggleActivationMember(vector<Member>& daftarMember, int targetId) {
+        for (auto& m : daftarMember) {
+            if (m.getId() == targetId) {
+                m.setStatus(!m.getStatus());
+                cout << "\n[Admin] Status Member ID " << targetId << " berhasil diubah." << endl;
+                return;
+            }
+        }
+        cout << "\n[Admin] Member dengan ID " << targetId << " tidak ditemukan." << endl;
+    }
+};
