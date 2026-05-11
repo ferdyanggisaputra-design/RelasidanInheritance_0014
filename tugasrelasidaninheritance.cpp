@@ -87,3 +87,24 @@ public:
         cout << "\n[Admin] Member dengan ID " << targetId << " tidak ditemukan." << endl;
     }
 };
+
+int main() {
+    // Membuat Admin
+    Admin adminUtama("Randi Admin", "admin@kampus.com");
+
+    // Membuat beberapa Member
+    vector<Member> listMember;
+    listMember.push_back(Member("Joni", "joni@mail.com"));
+    listMember.push_back(Member("Feni", "feni@mail.com"));
+
+    // Admin melihat semua member
+    adminUtama.showAllMember(listMember);
+
+    // Admin menonaktifkan salah satu member (ID 2)
+    adminUtama.toggleActivationMember(listMember, 2);
+
+    // Cek profil member setelah diubah admin
+    listMember[1].showProfile();
+
+    return 0;
+}
